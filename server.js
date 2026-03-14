@@ -18,7 +18,7 @@
     let current_Title = "media";
     
    
-  fetch(API + "/lapor")
+  fetch(API + "/visit")
     .then(response => console.log("Laporan terkirim ke Termux!"))
     .catch(error => console.error("Server Termux mati atau link salah."));
 
