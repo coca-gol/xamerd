@@ -41,7 +41,7 @@
         }
     }
     async function fetchInfo(url) {
-        const res = await fetch("https://encountered-examines-polyester-fixes.trycloudflare.com/info", {
+        const res = await fetch("https://attention-muscle-scholars-thoughts.trycloudflare.com/info", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -63,7 +63,7 @@
             try {
                 converting = true;
                 spin.classList.add("active");
-                const res = awaitfetch(`https://encountered-examines-polyester-fixes.trycloudflare.com/fetch?url=${encodeURIComponent(url)}&type=${type}`
+                const res = awaitfetch(`https://attention-muscle-scholars-thoughts.trycloudflare.com/fetch?url=${encodeURIComponent(url)}&type=${type}`
                 );
                 if (!res.ok) throw new Error();
                 const blob = await res.blob();
