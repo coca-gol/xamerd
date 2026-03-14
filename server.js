@@ -114,7 +114,7 @@
             if (getYouTubeId(url)) {
                 setupDownloadButtons(url);
             } else {
-                alert("Gagal mengambil informasi video");
+                alert("failed to retrieve info");
             }
         }
     });
