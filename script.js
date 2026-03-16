@@ -90,7 +90,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const rateButtons = document.querySelectorAll('.rate-btn');
     const downloadCutAudioLink = document.querySelector('#downloadCutAudioLink');
 
-    // prompt isntall pwa
     const installer = document.querySelector('#installPrompt');
     document.querySelector('#installNowBtn')?.addEventListener('click', async () => {
         if (!isPrompt) return;
@@ -113,11 +112,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         (e) => {
             e.preventDefault();
             isPrompt = e;
-            // Tampilkan popup setelah halaman siap
+   
             setTimeout(() => {
                 installer.classList.remove('hidden');
                 installer.classList.add('show');
-            }, 3000);
+            }, 7200);
         });
 
     // DEFAULT ON
