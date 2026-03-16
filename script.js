@@ -8,8 +8,8 @@ let isRepeat = false;
 let isPlaying = false;
 
 // cut - audio
-let areData = null; // ary buf data
-let codData = null; // decode data
+let areData = null;
+let codData = null; 
 let currentCutId = null;
 let isPreview = false;
 let isDecode = false;
@@ -29,12 +29,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     toastNotif = document.querySelector('#toastNotif');
     toastMessage = document.querySelector(".toast-message");
 
-    // music file
     const addFileBtn = document.querySelector('#addFileBtn');
     const fileInput = document.querySelector('#fileInput');
     const folderInput = document.querySelector('#folderInput');
 
-    // music list
     const musicList = document.querySelector('#music-list');
     const musicBtn = document.querySelector('#musicBtn');
     const artistBtn = document.querySelector('#artistBtn');
@@ -44,7 +42,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const searchInput = document.querySelector('#searchInput');
     const clearSearchBtn = document.querySelector('#clearSearchBtn');
 
-    // music player
     const progressRange = document.querySelector('#progress-range');
     const progressBorder = document.querySelector('#progress-border');
 
@@ -59,13 +56,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const eqToggleBtn = document.querySelector('#eqToggleBtn');
     const eqStatus = document.querySelector('#eq-status');
 
-    // FADE VOL
     const fadeInSlider = document.querySelector('#fadeIn');
     const fadeOutSlider = document.querySelector('#fadeOut');
     const fadeInValue = document.querySelector('#fadeInValue');
     const fadeOutValue = document.querySelector('#fadeOutValue');
 
-    // CUT- AUDIO
     const audioBtn = document.querySelector('#audioBtn');
     const audioProgres = document.querySelector('#audioProgres');
     const currentPG = document.querySelector('#currentPG');
@@ -101,14 +96,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (outcome === 'accepted');
         isPrompt = null;
     });
-
     document.querySelector('#installLaterBtn')?.addEventListener('click',
         () => {
             installer.classList.remove('show');
             setTimeout(() => installer.classList.add('hidden'), 1000);
         });
 
-    window.addEventListener('beforeinstallprompt',
+ window.addEventListener('beforeinstallprompt',
         (e) => {
             e.preventDefault();
             isPrompt = e;
@@ -119,7 +113,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             }, 7200);
         });
 
-    // DEFAULT ON
     function showToast(message,
         bg = "#fff",
         duration = 1000) {
@@ -149,7 +142,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         toastEnabled = !toastEnabled; modeMessageBtn.innerHTML = toastEnabled ? `<i class="fas fa-bell"></i>&nbsp;message`: `<i class="fas fa-bell-slash"></i>&nbsp;message`;
     });
 
-    // eq safety
     let eqEnabled = false;
 
     let subEQ = 0;
