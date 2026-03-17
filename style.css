@@ -902,9 +902,6 @@ input[type="range"] {
     color: #ddd;
 }
 
-/* ========================================
-  PAGE CONVERTER
-======================================== */
 #convertPageEl {
     position: fixed;
     inset: 0;
@@ -1032,11 +1029,25 @@ input[type="range"] {
 #converter-results.active {
     display: flex;
 }
-#converter-results iframe {
+#video-preview-iframe {
     position: relative;
     margin-top: var(--margin-base);
     width: 100%;
     height: 30vh;
+    overflow: hidden;
+}
+#video-preview-iframe img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#video-preview-iframe i {
+    position: absolute;
+    z-index: 5;
+    top: 0.5em;
+    right: 0.5em;
+    font-size: 1em;
+    color: #fff;
 }
 #converter-button-format {
     display: grid;
@@ -1067,9 +1078,6 @@ input[type="range"] {
     color: #888;
 }
 
-/* ============================
-  Page Videos
- ============================= */
 #videoPageEl {
     position: fixed;
     pointer-events: none;
@@ -1154,7 +1162,6 @@ input[type="range"] {
     pointer-events: none;
     background: transparent;
 }
-/* CONTROL VIDEO */
 .playVideoBtn {
     position: absolute;
     pointer-events: none;
@@ -1289,7 +1296,6 @@ input[type="range"] {
     font-weight: 900;
 }
 
-/* RATE AUDIOS */
 #sampleRateConfirm {
     position: fixed;
     inset: 0;
