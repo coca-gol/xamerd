@@ -15,9 +15,11 @@
     let converting = false;
     let current_Title = "media";
     let current_process = null;
+
     fetch(API + "/visit", {
         method: "POST",
     })
+
     function resetConvertUI() {
         results.classList.remove("active");
         loading.classList.remove("active");
@@ -70,12 +72,16 @@
             }
         };
     }
+
+    /* ================= SETUP DOWNLOAD ================= */
     function setupDownloadButtons(url) {
         handleDownload(linksVideo, spinVideo, url, "video");
         handleDownload(linksAudio, spinAudio, url, "audio");
         convertFm.classList.remove("hidden");
     }
+
     function blankThumbnailConvert() {
+
         const svg = `
         <svg xmlns="http://www.w3.org/2000/svg" width="640" height="360">
         <defs>
@@ -84,7 +90,9 @@
         <stop offset="100%" stop-color="#333"/>
         </linearGradient>
         </defs>
+
         <rect width="100%" height="100%" fill="url(#g)"/>
+
         <text x="50%" y="50%"
         dominant-baseline="middle"
         text-anchor="middle"
@@ -93,31 +101,39 @@
         font-family="sans-serif">
         No Preview
         </text>
+
         </svg>
         `;
+
         return "data:image/svg+xml," + encodeURIComponent(svg);
     }
+
     const blankFB = blankThumbnailConvert();
+
     converter.addEventListener("click", async () => {
         const url = inputIpv.value.trim();
         if (!url || !url.startsWith("https://")) {
             showToast("invalid links", "", 3600);
             return;
         }
+
         if (current_Title === current_process) return;
+
         resetConvertUI();
         results.classList.add("active");
         loading.classList.add("active");
         iframe.classList.add("hidden");
+
         try {
             const info = await fetchInfo(url);
+
             current_Title = sanitizeFilename(info.title || "media");
             current_process = current_Title;
 
             if (previewImg) {
                 previewImg.src = info.thumbnail;
-        
- iframe.classList.remove("hidden");
+                iframe.classList.remove("hidden");
+
                 previewImg.onerror = () => {
                     previewImg.src = blankFB;
                 };
@@ -125,12 +141,17 @@
             loading.classList.remove("active");
             setupDownloadButtons(url);
 
-        } catch {
+        } catch (e) {
+            console.error(e);
+
             previewImg.src = blankFB;
+
             loading.classList.remove("active");
+
             setupDownloadButtons(url);
         }
     });
+
     clearIpv.addEventListener("click",
         () => {
             if (!inputIpv.value.trim()) return;
