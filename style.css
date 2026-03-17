@@ -666,7 +666,7 @@ input[type="range"] {
     align-items: center;
     width: 100%;
     height: 50px;
-    padding: var(--border-base);
+    padding: 0.5em 1em;
     background: #fff;
     transition: background 0.3s ease, color 0.3s ease;
 }
