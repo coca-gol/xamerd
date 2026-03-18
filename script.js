@@ -1111,13 +1111,15 @@ const playLy = document.querySelector("#play-lyrics");
         return input ? input.value.trim(): "";
     }
 
-    function speakLyrics() {
+    
+function speakLyrics() {
         const text = getSelectedText();
         if (!text) return;
-        
-        const speech = new SpeechSynthesisUtterance(text);
 
-        speech.lang = "en-US";
+        const speech = new SpeechSynthesisUtterance(text);
+        const userLang = navigator.language || "en-US";
+
+        speech.lang = userLang; 
         speech.rate = 0.8;
         speech.onend = () => {
             speaking = false;
@@ -1125,7 +1127,6 @@ const playLy = document.querySelector("#play-lyrics");
         };
         speechSynthesis.speak(speech);
     }
-
     playLy.addEventListener("click", () => {
         const text = getSelectedText();
         if (!text) return;
