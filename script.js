@@ -648,7 +648,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!dur || isNaN(dur)) return;
         const p = (time / dur) * 100;
         const gradient = `linear-gradient(to right,
-        #fff000 ${p}%,
+        #fff ${p}%,
         #111 ${p}%)`;
         [progressRange,
             progressBorder].forEach(e => {
