@@ -2024,3 +2024,23 @@ input[type="range"] {
     border: none;
     color: #000;
 }
+.lyrics-preview-play {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.5em;
+    gap: 1em;
+    font-size: 1em;
+    background: #444;
+    color: #fff;
+}
+.lyrics-preview-play button,
+.lyrics-preview-play select {
+    flex-flow: 1;
+    padding: 0.5em 1em;
+    font-size: 0.7em;
+    background: #333;
+    color: #fff;
+    border: none;
+    outline: none;
+}
