@@ -18,13 +18,8 @@
 <button id="clearSearchBtn" style="display:none;"><i class="fas fa-times"></i></button>
 <button id="menuBtn"><i class="fas fa-bars"></i></button>
 </div>
+
 <div class="category-audio-area" translate="no">
-<button id="addFileBtn">
-<i class="fas fa-folder-open"></i>
-<span>ADD FILE</span>
-<input type="file" id="fileInput" accept="audio/*" style="display:none;">
-<input type="file" id="folderInput" webkitdirectory directory multiple accept="audio/*" style="display:none;">
-</button>
 <button id="openSetupBtn">
 <i class="fas fa-lock"></i>
 <span>PROGRESS</span>
@@ -45,9 +40,9 @@
 <button id="resetEditBtn"><i class="fas fa-times"></i></button>
 </div>
 </section>
-<!-- list music -->
+
 <section id="music-list"></section>
-<!-- PLAYER CONTROL -->
+
 <footer id="player-control-container">
 <div id="player-control-item" class="active-dominan-color">
 <label class="progress-bar-border">
@@ -59,7 +54,7 @@ max="0"
 value="0"
 step="0.01">
 </label>
-<!-- open popup -->
+
 <div id="now-playing-preview">
 <div class="all-cover-art"></div>
 <div class="track-details">
@@ -75,7 +70,6 @@ Unknown
 </div>
 </div>
 
-<!-- bottom -->
 <div class="player-controls-group">
 <button id="prevBtn"><i class="fas fa-step-backward"></i></button>
 <button id="playPauseBtn"><i class="fas fa-play"></i></button>
@@ -85,13 +79,15 @@ Unknown
 
 <div class="player-bottom-category" translate="no">
 <button id="openMusicBtn" class="category-btn active"><i class="fas fa-music"></i><span>music</span></button>
+<button id="addFileBtn">
+<i class="fas fa-plus"></i>
+<input type="file" id="fileInput" accept="audio/*" style="display:none;">
+<input type="file" id="folderInput" webkitdirectory directory multiple accept="audio/*" style="display:none;">
+</button>
 <button id="openConvertBtn" class="category-btn"><i class="fas fa-circle-down"></i><span>download</span></button>
-<button id="addVideoBtn" class="hidden"><i class="fas fa-plus"></i>
-<input type="file" id="addVideoInput" accept="video/*" style="display:none;"></button>
-<button id="openVideoBtn" class="category-btn"></i><i class="fas fa-video-camera"></i><span>video</span></button>
 </div>
 </footer>
-    
+
 <nav id="filter-mode">
 <button id="musicBtn" class="active" style="font-size:1.2em;"><i class="fas fa-music"></i><span style="font-size:0.7em;">music</span></button>
 <button id="artistBtn" style="font-size:1.2em;"><i class="fas fa-user"></i><span style="font-size:0.7em;">artist</span></button>
@@ -102,7 +98,6 @@ Unknown
 
 <nav id="viewPopupMenu">
 <div class="drag-handle"></div>
-<!-- header -->
 <div class="popup-header">
 <div class="all-cover-art"></div>
 <div class="popup-info-header">
@@ -111,6 +106,7 @@ Unknown
 </div>
 <button id="closePopupBtn"><i class="fas fa-arrow-down"></i></button>
 </div>
+
 <ul class="popup-content">
 <li><strong>Title</strong><span class="popTitle"></span></li>
 <li><strong>Artist</strong><span class="popArtist"></span></li>
@@ -132,6 +128,8 @@ Unknown
 <li><strong>Comment</strong><span id="popComment"></span></li>
 <li><strong>Lyrics</strong><span id="popLyrics"></span></li>
 </ul>
+
+<!-- progres bars -->
 <li class="popup-progress-bar">
 <span id="currentTimes" translate="no"></span>
 <input
@@ -145,10 +143,9 @@ step="0.01">
 </li>
 </div>
 </nav>
-<!-- SETUP TRIM -->
+
 <nav id="setup-audio-area">
 <div class="setup-audio-area">
-<!-- preset header -->
 <div class="sea-header-container" translate="no">
 <button id="resetRowProgress"><i class="fas fa-undo"></i>&nbsp;RESET</button>
 <button id="closeSetupBtn"><i class="fas fa-arrow-down"></i></button>
@@ -166,7 +163,6 @@ step="0.01">
 </button>
 </div>
 
-<!-- durasi unit di dapat-->
 <div class="file-time-options">
 <strong>DURATION<span class="duration-of-selection-results" translate="no">00:00</span></strong>
 <div class="preview-cut-audio">
@@ -191,7 +187,6 @@ step="0">
 <span id="durationPG" class="time-label" translate="no">00:00</span>
 </div>
 
-<!-- dual slider -->
 <div class="setting-cutter-container">
 <div class="time-display-wrapper" translate="no">
 <span> min </span> <span>TRIM</span>
@@ -238,7 +233,6 @@ step="0">
 <input type="range" id="sub" min="-15" max="15" step="1" value="0">
 <span class="slider-value" id="subValue">1.00</span>
 </div>
-
 <div class="eq-slider" translate="no">
 <label for="m3">400hz</label>
 <input type="range" id="m3" min="-15" max="15" step="1" value="0">
@@ -270,7 +264,7 @@ step="0">
 <span class="slider-value" id="h90Value">1.00</span>
 </div>
 </div>
-<!-- / Eq grup row -->
+
 <div class="eq-slider-merger">
 <label for="bass">LP</label>
 <input type="range" id="bass" min="0" max="1" step="0.05" value="0">
@@ -296,7 +290,7 @@ step="0">
 <input type="range" id="playback" min="0.5" max="1.5" step="0.05" value="1.00">
 <span class="slider-value" id="playbackValue">1.00</span>
 </div>
-<!-- fade in-out -->
+
 <div class="group-fade-effect">
 <div class="title-fade-effect">
 <span translate="no">Fade - In<p id="fadeInValue">
@@ -314,9 +308,8 @@ step="0">
 <input type="range" id="fadeOut" min="0" max="30" step="0.5" value="0">
 </div>
 </div>
-<!-- / Eq Menu -->
 </nav>
-<!-- end list -->
+
 <nav id="meta-audio-area">
 <button id="closeMetaBtn"><span></span>
 <i class="fas fa-arrow-down"></i></button>
@@ -334,35 +327,43 @@ step="0">
 <label id="resetInputBtn" translate="no"><i class="fas fa-undo"></i>RESET</label>
 </div>
 </div>
+
 <div class="output-preview-area">
 <label><p>
 TITLE
 </p>
 <input type="text" id="titleNameInput" placeholder="song title" /></label>
+
 <label><p>
 ARTIST
 </p>
 <input type="text" id="artistNameInput" placeholder="artist name" /></label>
+
 <label><p>
 ALBUM
 </p>
 <input type="text" id="albumNameInput" placeholder="album name" /></label>
+
 <label><p>
 ALBUM ARTIST
 </p>
 <input type="text" id="albumArtistInput" placeholder="album Artist name" /></label>
+
 <label><p>
 GENRE
 </p>
 <input type="text" id="genreInput" placeholder="genre" /></label>
+
 <label><p>
 COMPOSER
 </p>
 <input type="text" id="composerInput" placeholder="marc query" /></label>
+
 <label><p>
 PUBLISHER
 </p>
 <input type="text" id="publisherInput" placeholder="mvo music" /></label>
+
 <div class="change-metadata">
 <div class="output-preview-area">
 <label translate="no"><p>
@@ -377,6 +378,7 @@ Total TRACK
 <input type="number" id="totalTrackInput" placeholder="2" /></label>
 </div>
 </div>
+
 <div class="change-metadata">
 <div class="output-preview-area">
 <label translate="no"><p>
@@ -391,10 +393,12 @@ Total DISC
 <input type="number" id="totalDiscInput" placeholder="4" /></label>
 </div>
 </div>
+
 <label><p>
 KEY
 </p>
 <input type="text" id="keyInput" placeholder="c#m" /></label>
+
 <div class="output-preview-area">
 <label><p>
 BPM - Beats per minute
@@ -407,10 +411,13 @@ YEAR
 </p>
 <input type="number" id="yearInput" placeholder="2022" min="1900" max="2099" /></label>
 </div>
+
 <label><p>
 SOURCE
 </p>
 <input type="text" id="sourceUrlInput" placeholder="https://sample.com" /></label>
+
+
 <label><p>
 COMMENT
 </p>
@@ -418,6 +425,7 @@ COMMENT
 <textarea id="commentInput" placeholder="comment..."></textarea></label>
 </div>
 </label>
+
 <label><p>
 LYRICS
 </p>
@@ -430,55 +438,29 @@ LYRICS
 <span>ID3 will be included in the audio creation</span>
 </div>
 </nav>
-<!-- SIDE MENU-->
+
 <nav id="sideMenu" class="side-menu-overlay">
 <div class="side-menu">
 <ul class="sub-side-menu">
+
 <li id="changeInputBtn"><i class="fas fa-folder-open"></i>Change input</li>
 <li id="modeMessageBtn"><i class="fas fa-bell"></i>&nbsp;message</li>
 <hr class="separator">
+
 <li id="dateBtn"> <i class="fas fa-database"></i>&nbsp;Data seved</li>
+
 <ol id="date-seved" class="hidden">
 <li><button id="removeDateMp3"><i class="fas fa-times"></i></button>music :<p id="dataSaveDb"></p>
 -<p id="countMusic2"></p>
 </li>
-<li><button id="removeDateMp4"><i class="fas fa-times"></i></button>video :<p id="countSizeVideoEl"></p>
--<p id="countVideoEl"></p>
-</li>
 </ol>
-<li id="clearPlaylistBtn"><i class="fas fa-trash"></i>&nbsp;Delete data</li>
 <article class="end-info-block">
 <span id="langWatermark" aria-hidden="true" translate="no"></span>
 </article>
 </ul>
 </div>
 </nav>
-<!-- /SIDE MENU -->
-    
-<div id="videoPageEl">
-<!-- video -->
-<section id="videoGallery"></section>
-<nav id="itemInfoVideo">
-<div class="item-info-veo-head">
-<img id="itemVideoImg" alt="img" />
-<button class="rate-veo" data-rate="320"><i class="fas fa-cut"></i></button>
-</div>
-<li><label>FILE</label> <span id="itemVideoName">-</span></li>
-<li><label>FORMAT</label> <span id="itemVideoFormat">-</span></li>
-<li><label>DURATIONS</label> <span id="itemVideoDuration">-</span></li>
-<li><label>CREATEDAT</label> <span id="itemVideoCreated">-</span></li>
-<li><label>SIZE</label> <span id="itemVideoSize">-</span></li>
-<div class="item-veo-bottom">
-<button id="deleteVideoIdBtn"><span translate="no">delete</span></button>
-<button id="closeInfoVideoBtn"><span translate="no">close</span></button>
-</div>
-</nav>
-<section id="video-player-section" translate="no">
-<span id="currentTimeVd"></span>
-<span id="durationVd"></span>
-</section>
-</div>
-<!-- / PAGE VIDEO -->
+
 <div id="convertPageEl">
 <div class="convert-overlay-content">
 <div class="converter-info">online access</div>
@@ -487,17 +469,24 @@ LYRICS
 <button id="clearInputConvertBtn"><i class="fas fa-times"></i></button>
 </section>
 <div class="action-paste-input">
-<button id="converter-btn">SEARCH</button>
+<button id="converter-btn">DOWNLOAD</button>
 <span id="loading-converter"></span>
 </div>
-<section id="converter-results">
+
+<section id="converter-results" class="hidden">
 <div id="video-preview-iframe">
 <img id="preview-img-converter">
 <i class="fas fa-video-camera"></i>
 </div>
 <div id="converter-button-format">
-<button id="download-links-video"><i class="fas fa-arrow-down"></i>&nbsp; VIDEO<span id="spinner-load-videos"></span></button>
-<button id="download-links-audio"><i class="fas fa-arrow-down"></i>&nbsp; AUDIO<span id="spinner-load-audios"></span></button>
+<button id="download-links-video">
+<span class="label-formated">HQ</span>
+<i class="fas fa-arrow-down"></i>&nbsp; VIDEO
+<span id="spinner-load-videos"></span></button>
+<button id="download-links-audio">
+<span class="label-formated">HQ</span>
+<i class="fas fa-arrow-down"></i>&nbsp; AUDIO
+<span id="spinner-load-audios"></span></button>
 </div>
 </section>
 <div class="converter-info">
@@ -505,16 +494,14 @@ Download and convert videos then save them offline. Copy and paste the video lin
 </div>
 </div>
 </div>
-<!-- INSTALL PROMPT POPUP -->
+
 <div id="installPrompt" class="install-popup hidden">
 <div class="install-popup-content">
 <div class="install-sample">
-<img src="lib/icon.webp" alt="img" />
+<img src="lib/playCas.png" alt="img" />
 <div class="install-txt">
 <span>xamerid</span>
-<p>
-install?
-</p>
+<p>install?</p>
 </div>
 </div>
 </div>
@@ -528,7 +515,7 @@ install?
 <div id="toastNotif">
 <span class="toast-message"></span>
 </div>
- 
+
 <div id="encodeLoading" class="hidden">
 <div class="progress-percent-grup">
 <div id="circle-wrapper">
@@ -561,6 +548,7 @@ rendering audio...
 <button class="rate-btn" data-rate="256">MP3 256_KBPS</button>
 <button class="rate-btn" data-rate="320">MP3 320_KBPS</button>
 </section>
+
 <div class="confirm-actions">
 <button id="cancelRate">CANCEL</button>
 <button id="okRate">OKE</button>
@@ -572,6 +560,7 @@ rendering audio...
 <audio id="cutAudioPlayer" style="display:none;"></audio>
 <a id="downloadVeoLink" style="opacity:0;"></a>
 <a id="downloadCutAudioLink" style="opacity:0"></a>
+
 <script src="lib/jsmediatags.min.js" defer></script>
 <script src="lib/lame.min.js" defer></script>
 <script src="lib/browser-id3-writer.min.js" defer></script> 
