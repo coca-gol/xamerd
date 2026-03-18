@@ -1221,12 +1221,8 @@ input[type="range"] {
     align-items: center;
     text-align: center;
     font-size: 0.8em;
-    padding: 2em 0; 
+    padding: 2em; 
     color: #222;
-}
-#langWatermark .lang-flag-emoji {
-    font-size: 1em;
-    margin: 0 2em;
 }
 
 #viewPopupMenu {
