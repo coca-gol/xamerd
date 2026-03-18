@@ -104,8 +104,9 @@
     const blankFB = blankThumbnailConvert();
 
     converter.addEventListener("click", async () => {
+
     if (!navigator.onLine) {
-        showToast("internet required for downloader", "", 3600);
+        showToast("offline mode", "internet required for downloader", 3600);
         return;
     }
 
@@ -115,18 +116,27 @@
         showToast("invalid links", "", 3600);
         return;
     }
+
     if (current_Title === current_process) return;
 
     resetConvertUI();
     loading.classList.add("active");
 
     try {
+
         const info = await fetchInfo(url);
+
+        if (info.error) {
+            showToast("unsupported media", "", 3600);
+            return;
+        }
+
         current_Title = sanitizeFilename(info.title || "media");
         current_process = current_Title;
 
         if (previewImg) {
-            previewImg.src = info.thumbnail;
+            previewImg.src = info.thumbnail || blankFB;
+
             previewImg.onerror = () => {
                 previewImg.src = blankFB;
             };
@@ -135,17 +145,19 @@
         loading.classList.remove("active");
         iframe.classList.remove("hidden");
         results.classList.remove("hidden");
+
         setupDownloadButtons(url);
 
-    } catch {
-        previewImg.src = blankFB;
+    } catch (e) {
+        console.error("fetchInfo error:", e);
+        if (previewImg) previewImg.src = blankFB;
+
         loading.classList.remove("active");
 
         showToast("server error", "failed to fetch media info", 3600);
 
     }
 });
-
     clearIpv.addEventListener("click",
         () => {
             if (!inputIpv.value.trim()) return;
