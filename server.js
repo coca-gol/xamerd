@@ -105,7 +105,7 @@
 
     converter.addEventListener("click", async () => {
     if (!navigator.onLine) {
-        showToast("offline mode", "internet required for downloader", 3600);
+        showToast("internet required for downloader", "", 3600);
         return;
     }
 
