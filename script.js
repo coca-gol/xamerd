@@ -876,7 +876,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             });
 
-        // EVENT PLAY (PREVIEW)
         audioBtn.addEventListener('click',
             () => {
                 if (isNaN(cutAudioPlayer.duration)) return;
@@ -1107,8 +1106,9 @@ const playLy = document.querySelector("#play-lyrics");
 
     function getSelectedText() {
         const id = document.querySelector("#tts-source").value;
-        const el = document.getElementById(id);
-        return el ? el.value.trim(): "";
+        let element = `#${id}`; 
+        const input = document.querySelector(element) ?? inputIds.title.value;
+        return input ? input.value.trim(): "";
     }
 
     function speakLyrics() {
