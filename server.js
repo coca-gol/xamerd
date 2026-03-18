@@ -11,7 +11,7 @@
     const spinAudio = document.querySelector("#spinner-load-audios");
     const convertFm = document.querySelector("#converter-button-format");
     const previewImg = document.querySelector("#preview-img-converter");
-    const API = "https://gate-aged-forbes-bon.trycloudflare.com";
+    const API = "https://ips-heights-davis-allowance.trycloudflare.com";
     let converting = false;
     let current_Title = "media";
     let current_process = null;
