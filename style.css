@@ -93,6 +93,12 @@ input[type="range"] {
 .fa-folder-closed {
     --fa: "\e185";
 }
+.fa-minimize {
+    --fa: "\f78c";
+}
+.fa-trash {
+    --fa: "\f1f8";
+}
 
 .fa-pen {
     --fa: "\f304";
