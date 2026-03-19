@@ -2971,10 +2971,13 @@ function speakLyrics() {
     window.addEventListener("DOMContentLoaded", async () => {
         try {
             await openIndexedDB();
-        } finally {
             await loadAudioData();
-            await resetPlayerUI();
-        }});
+            resetPlayerUI();
+        } catch (err) {
+            console.error(err);
+            await clearAllMusic();
+        }
+    });
         
     /* if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register("sw.js")
