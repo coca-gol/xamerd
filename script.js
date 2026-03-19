@@ -2970,9 +2970,10 @@ function speakLyrics() {
 
     window.addEventListener("DOMContentLoaded", async () => {
         try {
-            await openIndexedDB();
-            await loadAudioData();
-            resetPlayerUI();
+            await Promise.all([
+                openIndexedDB(),
+                loadAudioData(),
+                resetPlayerUI()]);
         } catch (err) {
             console.error(err);
             await clearAllMusic();
