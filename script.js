@@ -993,7 +993,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 startSlider.value = cutNums.end;
                 return;
             }
-            if (cutAudioPlayer.currentTime < start) {
+            if (cutAudioPlayer.currentTime < start && (audioProgres.value < cutNums.end)) {
                 cutAudioPlayer.currentTime = start;
                 audioProgres.value = start;
             }
