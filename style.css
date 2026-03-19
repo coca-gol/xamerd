@@ -700,13 +700,13 @@ input[type="range"] {
     position: fixed;
     z-index: 2000;
     bottom: 0;
-    left: 2.5%;
-    right: 2.5%;
+    left: 0;
+    right: 0;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
-    width: 95%;
+    width: 100%;
     padding: 15px;
     border-radius: 0.1em;
     transform: translateY(100%);
