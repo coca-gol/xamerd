@@ -947,6 +947,13 @@ input[type="range"] {
     background: #555;
     color: #fff;
 }
+#host-info {
+    margin: 1em 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9em;
+    color: #bf00ff;
+}
 .converter-info {
     margin-top: 1em;
     text-align: center;
