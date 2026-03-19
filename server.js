@@ -11,6 +11,8 @@
     const spinAudio = document.querySelector("#spinner-load-audios");
     const convertFm = document.querySelector("#converter-button-format");
     const previewImg = document.querySelector("#preview-img-converter");
+const hostIN = document.querySelector("#host-info");
+
     const API = "https://permitted-sauce-scan-embedded.trycloudflare.com";
     let converting = false;
     let current_Title = "media";
@@ -23,6 +25,7 @@
         results.classList.add("hidden");
         loading.classList.remove("active");
         convertFm.classList.add("hidden");
+        hostIN.textContent = "";
         current_process = null;
     }
     function sanitizeFilename(name) {
@@ -145,17 +148,19 @@
         loading.classList.remove("active");
         iframe.classList.remove("hidden");
         results.classList.remove("hidden");
+        
+        hostIN.textContent = `${info.platform} - ${info.title}`;
 
         setupDownloadButtons(url);
 
     } catch (e) {
         console.error("fetchInfo error:", e);
+
+hostIN.textContent = "failed to fetch media info";
+
         if (previewImg) previewImg.src = blankFB;
 
         loading.classList.remove("active");
-
-        showToast("server error", "failed to fetch media info", 3600);
-
     }
 });
     clearIpv.addEventListener("click",
