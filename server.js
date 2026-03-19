@@ -32,19 +32,42 @@ const hostIN = document.querySelector("#host-info");
         return name.replace(/[\\/:*?"<>|]/g, "").trim();
     }
 
-    async function fetchInfo(url) {
-        const res = await fetch(`${API}/info`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                url
-            })
-        });
-        if (!res.ok) throw new Error("Server error");
-        return res.json();
+    async function fetchInfo(url, retries = 3, timeout = 12000) {
+
+    for (let i = 0; i < retries; i++) {
+
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), timeout);
+
+        try {
+
+            const res = await fetch(`${API}/info`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ url }),
+                signal: controller.signal
+            });
+
+            clearTimeout(timer);
+
+            if (!res.ok) throw new Error("Server error");
+
+            return await res.json();
+
+        } catch (err) {
+
+            clearTimeout(timer);
+
+            if (i === retries - 1) throw err;
+
+            console.log("Retry request...", i + 1);
+
+        }
     }
+}
+        
     function handleDownload(btn, spin, url, type) {
         btn.onclick = async () => {
             if (converting) {
