@@ -155,7 +155,6 @@ const hostIN = document.querySelector("#host-info");
             if (previewImg) {
                 previewImg.referrerPolicy = "no-referrer";
                 previewImg.onerror = () => {
-                    console.warn("Thumbnail blocked by provider policy, using fallback.");
                     previewImg.src = blankFB;
                     previewImg.onerror = null;
                 };
