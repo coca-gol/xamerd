@@ -31,8 +31,8 @@ const hostIN = document.querySelector("#host-info");
     function sanitizeFilename(name) {
         return name.replace(/[\\/:*?"<>|]/g, "").trim();
     }
-    async function fetchInfo(url, retries = 3, timeout = 12000) {
 
+    async function fetchInfo(url, retries = 3, timeout = 15000) {
         for (let i = 0; i < retries; i++) {
             const controller = new AbortController();
             const timer = setTimeout(() => controller.abort(), timeout);
@@ -51,18 +51,27 @@ const hostIN = document.querySelector("#host-info");
 
                 clearTimeout(timer);
 
-                if (!res.ok) throw new Error("Server error");
+                if (!res.ok) {
+                    const errorData = await res.json().catch(() => ({}));
+                    throw new Error(errorData.error || `Server Error (${res.status})`);
+                }
 
-                return await res.json();
+                const data = await res.json();
+                if (!data) throw new Error("Format data tidak valid");
+
+                return data;
 
             } catch (err) {
-
                 clearTimeout(timer);
 
-                if (i === retries - 1) throw err;
+                const isTimeout = err.name === 'AbortError';
+                const errorMessage = isTimeout ? "Request Timeout": err.message;
 
-                console.log("Retry request...", i + 1);
+                if (i === retries - 1) {
+                    throw new Error(errorMessage);
+                }
 
+                await new Promise(resolve => setTimeout(resolve, 1500));
             }
         }
     }
@@ -152,13 +161,25 @@ const hostIN = document.querySelector("#host-info");
             current_Title = sanitizeFilename(info.title || "media");
             current_process = current_Title;
 
-            if (previewImg) {
-                previewImg.referrerPolicy = "no-referrer";
-                previewImg.onerror = () => {
-                    previewImg.src = blankFB;
-                    previewImg.onerror = null;
+            if (info.thumbnail && previewImg) {
+
+                const params = new URLSearchParams();
+                params.append("url", info.thumbnail);
+                
+                const finalProxyUrl = `${API}/proxy-img?${params.toString()}`;
+
+                previewImg.style.display = "none";
+                previewImg.onload = () => {
+                    previewImg.style.display = "block"; 
+                    loading.classList.remove("active");
                 };
-                previewImg.src = info.thumbnail || blankFB;
+
+                previewImg.onerror = () => {
+                    previewImg.src = blankFB; 
+                    previewImg.style.display = "block";
+                    loading.classList.remove("active");
+                };
+                previewImg.src = finalProxyUrl;
             }
             loading.classList.remove("active");
             results.classList.remove("hidden");
