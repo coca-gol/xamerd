@@ -170,17 +170,17 @@ const hostIN = document.querySelector("#host-info");
 
                 const params = new URLSearchParams();
                 params.append("url", info.thumbnail);
-                
+
                 const finalProxyUrl = `${API}/proxy-img?${params.toString()}`;
 
                 previewImg.style.display = "none";
                 previewImg.onload = () => {
-                    previewImg.style.display = "block"; 
+                    previewImg.style.display = "block";
                     loading.classList.remove("active");
                 };
 
                 previewImg.onerror = () => {
-                    previewImg.src = blankFB; 
+                    previewImg.src = blankFB;
                     previewImg.style.display = "block";
                     loading.classList.remove("active");
                 };
