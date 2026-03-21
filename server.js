@@ -33,15 +33,19 @@ const hostIN = document.querySelector("#host-info");
     }
 
     async function fetchInfo(url, retries = 3, timeout = 15000) {
+
         for (let i = 0; i < retries; i++) {
+
             const controller = new AbortController();
             const timer = setTimeout(() => controller.abort(), timeout);
 
             try {
+
                 const res = await fetch(`${API}/info`, {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
                     },
                     body: JSON.stringify({
                         url
@@ -51,27 +55,28 @@ const hostIN = document.querySelector("#host-info");
 
                 clearTimeout(timer);
 
+                const text = await res.text();
+                const data = text ? JSON.parse(text): {};
+
                 if (!res.ok) {
-                    const errorData = await res.json().catch(() => ({}));
-                    throw new Error(errorData.error || `Server Error (${res.status})`);
+                    throw new Error(data.error || `Server Error (${res.status})`);
                 }
 
-                const data = await res.json();
-                if (!data) throw new Error("Format data tidak valid");
+                if (!data) {
+                    throw new Error("Format data tidak valid");
+                }
 
                 return data;
 
             } catch (err) {
+
                 clearTimeout(timer);
 
-                const isTimeout = err.name === 'AbortError';
-                const errorMessage = isTimeout ? "Request Timeout": err.message;
-
                 if (i === retries - 1) {
-                    throw new Error(errorMessage);
+                    throw err;
                 }
 
-                await new Promise(resolve => setTimeout(resolve, 1500));
+                await new Promise(r => setTimeout(r, 1500 * (i + 1)));
             }
         }
     }
