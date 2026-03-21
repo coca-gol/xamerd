@@ -1276,6 +1276,8 @@ function speakLyrics() {
                 albumArtInput.value = '';
                 const emptyTransfer = new DataTransfer();
                 albumArtInput.files = emptyTransfer.files;
+              if (isRunning)      visualizer('stop');
+
             }} catch {
             failCover();
         }
